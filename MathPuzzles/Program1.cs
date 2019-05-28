@@ -13,7 +13,7 @@ namespace MathPuzzles
 
         public static int GetAnswer()
         {
-            return GetNumbers(10).First(IsPalindrome);
+            return GetOddNumbers(10).First(IsPalindrome);
         }
 
         private static bool IsPalindrome(int number)
@@ -44,9 +44,10 @@ namespace MathPuzzles
             return str.SequenceEqual(str.Reverse());
         }
 
-        private static IEnumerable<int> GetNumbers(int start)
+        private static IEnumerable<int> GetOddNumbers(int start)
         {
-            for (var i = start; i < int.MaxValue; i++)
+            var first = start % 2 == 0 ? start + 1 : start;
+            for (var i = first; i < int.MaxValue; i += 2)
             {
                 yield return i;
             }
